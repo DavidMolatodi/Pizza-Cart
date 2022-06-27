@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine JS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+</head>
+
+<body>
+    <div class="container" x-data="{
+        showCart: false, 
+        SmallPizzaTotal : 0.00,
+        SmallPizzaQty : 0,
+        MediumPizzaTotal : 0.00, 
+        MediumPizzaQty : 0,
+        LargePizzaTotal : 0.00,
+        LargePizzaQty : 0,
+        payNow : false,
+        paymentAmount : 0,
+        paymentMessage : '',
+        buySmallPizza () {
+            this.SmallPizzaTotal += 35.54
+            this.SmallPizzaQty +=1
+         } ,
+         buyMediumPizza () {
+            this.SmallPizzaTotal += 89.89
+            this.SmallPizzaQty +=1
+         } ,
+         buyLargePizza () {
+            this.SmallPizzaTotal += 115.00
+            this.SmallPizzaQty +=1
+         } ,
+
+         clearSmallPizza () {
+        if ( this.SmallPizzaQty >0) {
+           this.SmallPizzaTotal -= 35.54
+           this.SmallPizzaQty -=1
+        }   
+         } ,
+         clearMediumPizza () {
+            if ( this.MediumPizzaQty >0) {
+               this.MediumPizzaTotal -= 89.89
+               this.MediumPizzaQty -=1
+            }   
+             } ,
+             clearLargePizza () {
+                if ( this.LargePizzaQty >0) {
+                   this.LargePizzaTotal -= 115.00
+                   this.LargePizzaQty -=1
+                }   
+                 } ,
+
+
+          cartTotal () {
+            
+            return this.SmallPizzaTotal + this.MediumPizzaTotal + this.LargePizzaTotal ;
+          } ,
+
+          totalQty () {
+            
+            return this.SmallPizzaQty + this.mediumPizzaQty + this.LargePizzaQty;
+          } ,
+
+          makePayment () {
+            if (!this.paymentAmount ) {
+                this.paymentMessage = 'No amount Entered!'
+            }
+            if (this.paymentAmount >= this.cartTotal() ) {
+                this.paymentMessage = 'Payment successful!'
+
+                setTimeout (() => {
+                    this.payNow = false;
+                    this.clearcart()
+                }, 3000) ;
+
+            } else if {
+                this.paymentMessage = 'Payment Failed - Insufficient amount!'
+            }
+          } ,
+
+          clearCart () {
+         this.SmallPizzaTotal = 0.00;
+         this.SmallPizzaQty = 0;
+         this.MediumPizzaTotal =0.00;
+         this.MediumPizzaQty = 0;
+         this.LargePizzaTotal = 0.00;
+         this.LargePizzaQty = 0;
+          }
+        }">
+
+        <div class="header">
+
+            <div class="f3">
+                <h1> For the love of Kazi Pizza</h1>
+
+                <img src="https://user-images.githubusercontent.com/34037/167313920-09aeb40f-9952-439b-8e54-a04c02caa427.png"
+                    alt="" width="40">
+                <img src="https://user-images.githubusercontent.com/34037/167314003-8ded573d-4bb2-447f-b27c-5545631b1904.png"
+                    alt="" width="40">
+                <img src="https://user-images.githubusercontent.com/34037/167314038-e58b68c0-2742-43c6-a358-8b94d3c99617.png"
+                    alt="" width="40">
+
+                <small>Inspired by <a href="http://www.PerfectPizzaipsum.com/">PerfectPizzaipsum</a> </small>
+            </div>
+
+
+            <div class="f1">
+                <!--	 <!-   <a href="" class="cart-link" > -->
+                <button x-on:click="showCart= true"><img
+                        src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg" width="30"
+                        alt="">Show cart</button>
+                <strong x-show="totalQty() > 0"><span x-text="toyalQty()"></span> Pizzas in the cart </strong>
+                <!--	</a> -->
+                <!-- <span>0.00</span> -->
+            </div>
+        </div>
+
+        <div class="cart-box">
+            <div class="cart" x-show="showCart">
+                <div>
+                    <button x-on:click="showCart=false">
+                        <img src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg" width="30"
+                            alt="">Close cart</button>
+                    <strong x-show="totalQty() > 0"><span x-text="toyalQty()"></span> Pizzas in the cart </strong>
+                </div>
+
+                <div class="">
+                    <h2>Cart
+                        <img src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg" width="30"
+                            alt="">
+                    </h2>
+                </div>
+
+                <div class="ShoppingCart">
+                    <h3>Pizza Orders</h3>
+                    <table>
+                        <tr x-show="SmallPizzaQty > 0">
+                            <td>Small Pizza</td>
+                            <td>
+                                <span x-text="SmallPizzaQty"></span>
+                                <button x-on:click="BuySmallPizza()" x-show="SmallPizzaQty > 0">+</button>
+                                <button x-on:click="clearSmallPizza()" x-show="SmallPizzaQty > 0">-</button>
+                            </td>
+                            <td>
+                                R<span x-text="SmallPizzaTotal"></span>
+                            </td>
+                        </tr>
+
+                        <tr x-show="MediumPizzaQty > 0">
+                            <td>Medium Pizza</td>
+                            <td>
+                                <span x-text="MediumPizzaQty"></span>
+                                <button x-on:click="BuyMediumPizza()" x-show="MediumPizzaQty>0">+</button>
+                                <button x-on:click="clearMediumPizza()" x-show="MediumPizzaQty>0">-</button>
+                            </td>
+                            <td>
+                                R<span x-text="MediumPizzaTotal"></span>
+                            </td>
+                        </tr>
+
+                        <tr x-show="LargePizzaQty > 0">
+                            <td>Large Pizza</td>
+                            <td>
+                                <span x-text="LargePizzaQty"></span>
+                                <button x-on:click="BuyLargePizzaP()" x-show="LargePizzaQty>0">+</button>
+                                <button x-on:click="clearLargePizzaN()" x-show="LargePizzaQty>0">-</button>
+                            </td>
+                            <td>
+                                R<span x-text="LargePizzaTotal"></span>
+                            </td>
+                        </tr>
+
+                        <tr x-show="cartTotal() > 0">
+                            <td colspan="2">Total</td>
+
+                            <td>
+                                R<span x-text="cartTotal()"></span>
+                            </td>
+                        </tr>
+
+
+
+
+                        <tr>
+
+                            <td colspan="2">
+                                <div x-show="payNow">
+                                    <div class="message" x-text="paymentMessage"></div>
+                                    <div>
+                                        <label for="">Payment amount</label>
+                                        <input class="input" type="number" placeholder="Payment amount"
+                                            x-model="paymentAmount">
+                                        <button x-on:click="makePayment" class="btn">
+                                            <img src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg"
+                                                width="20" alt="">Pay Now </button>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <button x-show="!PayNow" x-on:click="payNow=true" class="btn"> <img
+                                        src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg"
+                                        width="20" alt="">Pay</button>
+                            </td>
+
+                        </tr>
+
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="pizzas">
+
+            <div style="background-color:orangered" class="pizza">
+                <img src="https://user-images.githubusercontent.com/34037/167313920-09aeb40f-9952-439b-8e54-a04c02caa427.png"
+                    alt="" width="130">
+                <h2>Small Pizza</h2>
+                <h3>R35.54</h3>
+                <button class="Buy" x-on:click="buySmallPizza">
+                    <img src="https://user-images.githubusercontent.com/34037/167313920-09aeb40f-9952-439b-8e54-a04c02caa427.png"
+                        alt="" width="20">
+                    Buy</button>
+                <div>
+                    <h4>small pizza with 2 toppings (1 meat topping / 3 or less other toppings)</h4>
+                </div>
+            </div>
+
+            <div style="background-color:orangered" class="pizza">
+                <img src="https://user-images.githubusercontent.com/34037/167313920-09aeb40f-9952-439b-8e54-a04c02caa427.png"
+                    alt="" width="170">
+                <h2>Medium Pizza</h2>
+                <h3>R89.89</h3>
+                <button class="Buy" x-on:click="MediumPizzaTotal += 89.89; MediumPizzaQty +=1 ">
+                    <img src="https://user-images.githubusercontent.com/34037/167313920-09aeb40f-9952-439b-8e54-a04c02caa427.png"
+                        alt="" width="20">
+                    Buy</button>
+
+                <div>
+                    <h4>medium mageritha pizza with 3 toppings max. 2 or less max topping.3 or less other toppings.</h4>
+                </div>
+            </div>
+
+
+            <div style="background-color:orangered" class="pizza">
+                <img src="https://user-images.githubusercontent.com/34037/167313920-09aeb40f-9952-439b-8e54-a04c02caa427.png"
+                    alt="">
+                <h2>Large Pizza</h2>
+                <h3>R115.00</h3>
+
+                <button class="Buy" x-on:click="LargePizzaTotal += 115.00; LargePizzaQty +=1 ">
+                    <img src="https://user-images.githubusercontent.com/34037/167313920-09aeb40f-9952-439b-8e54-a04c02caa427.png"
+                        width="20" alt="">
+                    Buy</button>
+
+                <div>
+                    <h4>large mageritha pizza with 3 toppings max (2 or less max topping,3 or less other toppings)</h4>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div>
+            <footer class="footer">
+                <br>Contact us at: (011)-234-3300 twitter</br>
+                /fb<br>
+                /insta<br>
+                @perfectpizza
+                <div class="side-bar">
+                    <br>Pizza Plaza<br>Dough Road<br>Base Town
+                </div>
+        </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+.pizza {
+border: 1px solid;
+padding: 1em;
+margin: 1em;
+border-radius: 1em;
+background-color: orange
+}
+
+
+@media (min-width: 768px) {
+.pizzas {
+display: flex;
+display:inline-flex;
+}
+body {
+background-color: lightseagreen
+}
+}
+.footer {
+position:bottom;
+background-color: yellowgreen;
+display: flex;
+padding: 1em;
+margin: 1em;
+
+}
+.side-bar {
+text-align: right;
+flex: 1;
+}
+
+table, th,td {
+border: 1px solid black;
+}
+
+.container .btn{
+position:static;
+top:50%;
+left:50%;
+
+background-color: #F1F1F1;
+color:black;
+font-size: 10px;
+text-align: left;
+}
+
+.container .btn:hover {
+background-color: black;
+color:white;
+
+}

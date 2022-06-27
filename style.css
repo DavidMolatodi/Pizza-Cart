@@ -1,0 +1,237 @@
+body {
+    font-family: arial, sans-serif;
+}
+
+.cupcake {
+    /* border: 3px solid gold; */
+    padding: 1em;
+    margin: 1em;
+    border-radius: 0.5em;
+    background-color: coral;
+}
+
+
+body {
+    background-color: lightgoldenrodyellow;
+}
+
+@media (min-width: 600px) {
+    body {
+        background-color: brown;
+    }
+}
+
+@media (min-width: 960px) {
+    body {
+        background-color: lightgreen;
+    }
+}
+
+/* Add this class */
+.box {
+    /* background-color:lightseagreen; */
+    border: 1em solid dodgerblue;
+    width: 10%;
+    padding: 2em 1em 2em 0em;
+}
+
+.box1 {
+    /* background-color:lightseagreen; */
+    border: 1px solid lightblue;
+    width: 10px;
+    padding: 2em 1em 2em 0em;
+}
+
+.header {
+    padding: 1em;
+    background-color: seagreen;
+    display: flex;
+    border-radius: 0.5em;
+}
+
+h1 {
+
+    /* padding: 1em; */
+    /* border-radius: 0.25em; */
+}
+
+h2 {
+    /* background-color: lightcoral; */
+    /* padding: 1em; */
+}
+
+span {
+   /* border: 1px solid;
+    background-color: lightgreen;
+    padding: 1em;
+    margin: 1em; */
+}
+
+.input {
+    margin: 1em;
+}
+
+.link {
+    background-color: lightcoral;
+    width: 15em;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 0.5em;
+    /* text-align: center; */
+}
+
+.link:hover {
+    background-color: crimson;
+}
+
+
+.cart-box {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.cart-link {
+    link: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.cart {
+    background-color: seagreen;
+    /* margin: 0.5em; */
+    padding: 1em;
+    width: 100%;
+    margin-top: -10em;
+    border-radius: 0.5em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    text-align: center;
+    vertical-align: bottom;
+    /* height: 50px; */
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ccc;
+
+}
+
+.f1 {
+    flex: 1
+}
+
+.f3 {
+    flex: 3;
+}
+
+.message {
+    padding: 1em;
+    /* color: grey; */
+    font-weight: bold;
+    background-color: gold;
+}
+
+.input {
+    padding: 1em;
+}
+
+.btn {
+    padding: 1em 0em 1em 0em;
+    width: 5em;
+    background-color: white;
+    color: grey;
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+    border-radius: 0.25em;
+}
+
+.buy {
+    width: 7em;
+    margin-bottom: 1em;
+    
+    /* padding: 1em 0em 1em 0em;
+    border-radius: 0.25em;
+    background-color: gold;
+    color: grey;
+    font-weight: bold;
+    border: 0;
+    cursor: pointer; */
+}
+
+@media (min-width: 1024px) {
+    .cupcakes {
+        display: flex;
+    }
+
+    .cart {
+        /* background-color: dodgerblue; */
+        /* padding: 1em; */
+        width: 50%;
+        /* margin-top: -10em; */
+        /* border-radius-bottom: 1em; */
+    }
+
+}
+
+body {
+    background-color: lightseagreen;
+}
+@media (min-width: 768px) {
+    .pizzas {
+    display: flex;
+    
+}
+}   
+
+.medium {
+    background-color: seagreen;
+    border-radius: 0.80cm;
+    width: fit-content;
+    padding: 1em;
+    margin: 1em;
+}
+.large {
+    background-color: seagreen;
+    border-radius: 0.80cm;
+    width: fit-content;
+    padding: 1em;
+    margin: 1em;
+}
+.small {
+    background-color: seagreen;
+    border-radius: 0.80cm;
+    width: fit-content;
+    padding: 1em;
+    margin: 1em;
+}
+.footer {
+    position:bottom;
+    background-color: seagreen;
+    display: flex;
+    padding: 1em;
+    margin: 1em;
+    }
+
+    .side-bar {
+text-align: right;
+flex: 1;
+}
+    .pizza {
+        border: 1px solid;
+        padding: 1em;
+        margin: 1em;
+        border-radius: 1em;
+        background-color: orange
+        }
